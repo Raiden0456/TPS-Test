@@ -1,5 +1,5 @@
-import {PaginateConfig} from 'nestjs-paginate'
-import {User} from '../../src/system/user/entity/user.entity'
+import { PaginateConfig } from 'nestjs-paginate'
+import { User } from '../../src/system/user/entity/user.entity'
 
 export const UsersPaginated: PaginateConfig<User> = {
     defaultSortBy: [['createdAt', 'DESC']],

@@ -15,7 +15,7 @@ async function bootstrap() {
             transform: true,
             transformOptions: { enableImplicitConversion: true },
             whitelist: true,
-        })
+        }),
     )
     app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)))
     useContainer(app.select(AppModule), { fallbackOnErrors: true })

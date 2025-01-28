@@ -1,12 +1,12 @@
-const eslintPlugin = require('@typescript-eslint/eslint-plugin');
-const tsParser = require('@typescript-eslint/parser');
-const prettier = require('eslint-plugin-prettier');
-const importPlugin = require('eslint-plugin-import');
+import eslintPlugin from '@typescript-eslint/eslint-plugin'
+import tsParser from '@typescript-eslint/parser'
+import prettier from 'eslint-plugin-prettier'
+import importPlugin from 'eslint-plugin-import'
 
-module.exports = [
+export default [
     {
         // Явно указываем файлы для проверки
-        files: ["src*.ts", "apps*.ts", "libs*.ts", "test*.ts"],
+        files: ['src/**/*.ts', 'apps/**/*.ts', 'libs/**/*.ts', 'test/**/*.ts'],
 
         languageOptions: {
             parser: tsParser,
@@ -35,9 +35,9 @@ module.exports = [
         settings: {
             'import/resolver': {
                 typescript: {
-                    project: 'tsconfig.json' // Указываем путь к tsconfig.json для поддержки алиасов
-                }
-            }
+                    project: 'tsconfig.json', // Указываем путь к tsconfig.json для поддержки алиасов
+                },
+            },
         },
 
         rules: {
@@ -73,10 +73,10 @@ module.exports = [
             'prettier/prettier': ['error', {}, { usePrettierrc: true }],
 
             // Отступы
-            'indent': ['error', 4, { 'SwitchCase': 1 }], // Отступ в 4 пробела
-            'brace-style': ['error', '1tbs', { 'allowSingleLine': false }],
+            indent: ['error', 4, { SwitchCase: 1 }], // Отступ в 4 пробела
+            'brace-style': ['error', '1tbs', { allowSingleLine: false }],
         },
 
         ignores: [],
-    }
-];
+    },
+]
