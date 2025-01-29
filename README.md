@@ -49,6 +49,9 @@
     ```sh
     npm run migration
     ```
+    Это создаст админского пользователя со следующими данными для входа:
+    - email: admin@admin.com
+    - password: admin
 
 7. Запустите приложение:
     ```sh
