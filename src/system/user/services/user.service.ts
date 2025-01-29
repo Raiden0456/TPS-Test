@@ -31,7 +31,7 @@ export class UserService {
 
     async authenticate(dto: UserAuthDto, isAdmin: boolean = false) {
         const user = await this.userRepository.findOne({
-            where: { email: dto.email, role: isAdmin ? undefined : In([RolesEnum.MODERATOR, RolesEnum.ADMIN]) },
+            where: { email: dto.email, role: isAdmin ? In([RolesEnum.MODERATOR, RolesEnum.ADMIN]) : undefined },
         })
 
         if (!user) {

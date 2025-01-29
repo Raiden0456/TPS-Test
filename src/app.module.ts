@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 import { buildDataSourceOptions } from './database.provider'
 import { validationSchema } from './env.validation'
+import { ScheduleModule } from './system/schedule/schedule.module'
 import { UserModule } from './system/user/user.module'
 
 @Module({
@@ -18,6 +19,7 @@ import { UserModule } from './system/user/user.module'
             useFactory: buildDataSourceOptions,
         }),
         UserModule,
+        ScheduleModule,
     ],
     controllers: [],
     providers: [],

@@ -1,73 +1,81 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# TPS-Test Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Описание
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Этот проект представляет собой серверную часть приложения, разработанную с использованием фреймворка NestJS и базы данных PostgreSQL. Он включает в себя функционал для управления пользователями и расписанием.
 
-## Description
+### Основные функции:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Авторизация и регистрация пользователей**: Пользователи могут зарегистрироваться и войти в систему.
+- **Управление расписанием**: Администраторы могут создавать, редактировать и удалять расписания.
+- **Проверка доступности сервиса**: Пользователи могут проверять, доступен ли сервис в текущий момент времени.
 
-## Installation
+## Установка
 
-```bash
-$ npm install
-```
+1. Клонируйте репозиторий:
+    ```sh
+    git clone <URL репозитория>
+    cd TPS-Test
+    ```
 
-## Running the app
+2. Создайте файл `.env` в корне проекта и добавьте следующие переменные окружения:
+    ```env
+    DATABASE_HOST=localhost
+    DATABASE_PORT=5432
+    DATABASE_PORT_OUT=5432
+    DATABASE_USER=postgres
+    DATABASE_PASSWORD=yourpassword
+    DATABASE_DB=tps_test
+    JWT_SECRET=your_jwt_secret
+    JWT_EXPIRES=1h
+    ```
 
-```bash
-# development
-$ npm run start
+3. Запустите Docker Compose для запуска базы данных и приложения:
+    ```sh
+    docker compose up -d
+    ```
 
-# watch mode
-$ npm run start:dev
+4. Установите зависимости:
+    ```sh
+    npm install
+    ```
 
-# production mode
-$ npm run start:prod
-```
+5. Сбилдите проект:
+    ```sh
+    npm run build
+    ```
 
-## Test
+6. Примените миграции для создания таблиц в базе данных:
+    ```sh
+    npm run migration
+    ```
 
-```bash
-# unit tests
-$ npm run test
+7. Запустите приложение:
+    ```sh
+    npm run start
+    ```
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+## Скрипты
 
-## Support
+- `npm run build` - Сборка проекта
+- `npm run start` - Запуск проекта
+- `npm run start:dev` - Запуск проекта в режиме разработки
+- `npm run start:prod` - Запуск проекта в режиме продакшн
+- `npm run lint` - Запуск линтера
+- `npm run test` - Запуск тестов
+- `npm run test:watch` - Запуск тестов в режиме наблюдения
+- `npm run test:cov` - Запуск тестов с покрытием
+- `npm run test:debug` - Запуск тестов в режиме отладки
+- `npm run test:e2e` - Запуск end-to-end тестов
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## API Документация
 
-## Stay in touch
+API документация доступна по адресу: `http://localhost:3000/api-docs`
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Структура проекта
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+- `src/app.module.ts` - Главный модуль приложения
+- `src/database` - Конфигурация базы данных и миграции
+- `src/system` - Основные модули системы (пользователи, расписание)
+- `src/common` - Общие утилиты, декораторы, ошибки и т.д.
